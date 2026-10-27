@@ -96,6 +96,8 @@ npm run typecheck && npm run lint && npm test && npm run build
 
 ## 8. Publicação
 
+**Vercel:** em *Project Settings → Environment Variables* crie `VITE_SUPABASE_URL` e `VITE_SUPABASE_ANON_KEY` (marque **Production** e **Preview**) e faça um **novo deploy** — variáveis `VITE_*` são embutidas no momento do build; o `.env.local` não vai para o Git nem para a Vercel. O `vercel.json` já traz o fallback de SPA e cabeçalhos de segurança. Depois, inclua a URL do deploy em *Authentication → URL Configuration* no Supabase (Site URL e Redirect URLs).
+
 `npm run build` gera `dist/` (estático). Hospede em qualquer CDN/host estático (Vercel, Netlify, Cloudflare Pages…) com **fallback de SPA** para `index.html`, defina as duas variáveis `VITE_*` no painel do host e inclua o domínio nas *Redirect URLs* do Supabase. Novas migrations devem terminar concedendo explicitamente os acessos (objetos novos não herdam permissões).
 
 ## 9. Limitações conhecidas
